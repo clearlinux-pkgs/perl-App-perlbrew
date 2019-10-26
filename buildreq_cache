@@ -1,5 +1,6 @@
-0.86
+0.87
 perl(ExtUtils::Config)
 perl(ExtUtils::Helpers)
 perl(ExtUtils::InstallPaths)
 perl(Module::Build::Tiny)
+util-linux
