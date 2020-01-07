@@ -4,7 +4,7 @@
 #
 Name     : perl-App-perlbrew
 Version  : 0.87
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.87.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.87.tar.gz
 Summary  : 'Manage perl installations in your C<$HOME>'
@@ -13,6 +13,7 @@ License  : Artistic-1.0 GPL-2.0 MIT
 Requires: perl-App-perlbrew-bin = %{version}-%{release}
 Requires: perl-App-perlbrew-license = %{version}-%{release}
 Requires: perl-App-perlbrew-man = %{version}-%{release}
+Requires: perl-App-perlbrew-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(ExtUtils::Config)
 BuildRequires : perl(ExtUtils::Helpers)
@@ -73,7 +74,6 @@ Group: Development
 Requires: perl-App-perlbrew-bin = %{version}-%{release}
 Provides: perl-App-perlbrew-devel = %{version}-%{release}
 Requires: perl-App-perlbrew = %{version}-%{release}
-Requires: perl-App-perlbrew = %{version}-%{release}
 
 %description dev
 dev components for the perl-App-perlbrew package.
@@ -95,8 +95,18 @@ Group: Default
 man components for the perl-App-perlbrew package.
 
 
+%package perl
+Summary: perl components for the perl-App-perlbrew package.
+Group: Default
+Requires: perl-App-perlbrew = %{version}-%{release}
+
+%description perl
+perl components for the perl-App-perlbrew package.
+
+
 %prep
 %setup -q -n App-perlbrew-0.87
+cd %{_builddir}/App-perlbrew-0.87
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -129,12 +139,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/App/Perlbrew/Path.pm
-/usr/lib/perl5/vendor_perl/5.28.2/App/Perlbrew/Path/Installation.pm
-/usr/lib/perl5/vendor_perl/5.28.2/App/Perlbrew/Path/Installations.pm
-/usr/lib/perl5/vendor_perl/5.28.2/App/Perlbrew/Path/Root.pm
-/usr/lib/perl5/vendor_perl/5.28.2/App/Perlbrew/Util.pm
-/usr/lib/perl5/vendor_perl/5.28.2/App/perlbrew.pm
 
 %files bin
 %defattr(-,root,root,-)
@@ -158,3 +162,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %files man
 %defattr(0644,root,root,0755)
 /usr/share/man/man1/perlbrew.1
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/App/Perlbrew/Path.pm
+/usr/lib/perl5/vendor_perl/5.30.1/App/Perlbrew/Path/Installation.pm
+/usr/lib/perl5/vendor_perl/5.30.1/App/Perlbrew/Path/Installations.pm
+/usr/lib/perl5/vendor_perl/5.30.1/App/Perlbrew/Path/Root.pm
+/usr/lib/perl5/vendor_perl/5.30.1/App/Perlbrew/Util.pm
+/usr/lib/perl5/vendor_perl/5.30.1/App/perlbrew.pm
