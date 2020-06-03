@@ -4,7 +4,7 @@
 #
 Name     : perl-App-perlbrew
 Version  : 0.88
-Release  : 5
+Release  : 6
 URL      : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.88.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.88.tar.gz
 Summary  : 'Manage perl installations in your C<$HOME>'
@@ -164,9 +164,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/App/Perlbrew/Path.pm
-/usr/lib/perl5/vendor_perl/5.30.2/App/Perlbrew/Path/Installation.pm
-/usr/lib/perl5/vendor_perl/5.30.2/App/Perlbrew/Path/Installations.pm
-/usr/lib/perl5/vendor_perl/5.30.2/App/Perlbrew/Path/Root.pm
-/usr/lib/perl5/vendor_perl/5.30.2/App/Perlbrew/Util.pm
-/usr/lib/perl5/vendor_perl/5.30.2/App/perlbrew.pm
+/usr/lib/perl5/vendor_perl/5.30.3/App/Perlbrew/Path.pm
+/usr/lib/perl5/vendor_perl/5.30.3/App/Perlbrew/Path/Installation.pm
+/usr/lib/perl5/vendor_perl/5.30.3/App/Perlbrew/Path/Installations.pm
+/usr/lib/perl5/vendor_perl/5.30.3/App/Perlbrew/Path/Root.pm
+/usr/lib/perl5/vendor_perl/5.30.3/App/Perlbrew/Util.pm
+/usr/lib/perl5/vendor_perl/5.30.3/App/perlbrew.pm
