@@ -4,7 +4,7 @@
 #
 Name     : perl-App-perlbrew
 Version  : 0.92
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.92.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.92.tar.gz
 Summary  : 'Manage perl installations in your C<$HOME>'
