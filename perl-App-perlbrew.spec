@@ -4,7 +4,7 @@
 #
 Name     : perl-App-perlbrew
 Version  : 0.92
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.92.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.92.tar.gz
 Summary  : 'Manage perl installations in your C<$HOME>'
@@ -34,7 +34,7 @@ perlbrew init
 perlbrew available
 
 # Install some Perls
-perlbrew install 5.34.0
+perlbrew install 5.32.1
 perlbrew install perl-5.28.3
 perlbrew install perl-5.33.6
 
@@ -42,7 +42,7 @@ perlbrew install perl-5.33.6
 perlbrew list
 
 # Swith to an installation and set it as default
-perlbrew switch perl-5.34.0
+perlbrew switch perl-5.32.1
 
 # Temporarily use another version only in current shell.
 perlbrew use perl-5.28.3
@@ -52,8 +52,8 @@ perl -v
 perlbrew off
 
 # Turn it back on with 'switch', or 'use'
-perlbrew switch perl-5.34.0
-perlbrew use perl-5.34.0
+perlbrew switch perl-5.32.1
+perlbrew use perl-5.32.1
 
 # Exec something with all perlbrew-ed perls
 perlbrew exec -- perl -E 'say $]'
