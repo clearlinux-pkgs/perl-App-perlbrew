@@ -4,13 +4,14 @@
 #
 Name     : perl-App-perlbrew
 Version  : 0.95
-Release  : 20
+Release  : 21
 URL      : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.95.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.95.tar.gz
 Summary  : 'Manage perl installations in your C<$HOME>'
 Group    : Development/Tools
 License  : MIT
 Requires: perl-App-perlbrew-bin = %{version}-%{release}
+Requires: perl-App-perlbrew-license = %{version}-%{release}
 Requires: perl-App-perlbrew-man = %{version}-%{release}
 Requires: perl-App-perlbrew-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
@@ -60,6 +61,7 @@ perlbrew exec -- perl -E 'say $]'
 %package bin
 Summary: bin components for the perl-App-perlbrew package.
 Group: Binaries
+Requires: perl-App-perlbrew-license = %{version}-%{release}
 
 %description bin
 bin components for the perl-App-perlbrew package.
@@ -74,6 +76,14 @@ Requires: perl-App-perlbrew = %{version}-%{release}
 
 %description dev
 dev components for the perl-App-perlbrew package.
+
+
+%package license
+Summary: license components for the perl-App-perlbrew package.
+Group: Default
+
+%description license
+license components for the perl-App-perlbrew package.
 
 
 %package man
@@ -112,6 +122,8 @@ fi
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-App-perlbrew
+cp %{_builddir}/App-perlbrew-0.95/LICENSE %{buildroot}/usr/share/package-licenses/perl-App-perlbrew/dbb5c2e335cba3ce3f9a227e76d7f51948f6e35d
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -139,16 +151,14 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/App::Perlbrew::Util.3
 /usr/share/man/man3/App::perlbrew.3
 
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-App-perlbrew/dbb5c2e335cba3ce3f9a227e76d7f51948f6e35d
+
 %files man
 %defattr(0644,root,root,0755)
 /usr/share/man/man1/perlbrew.1
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/App/Perlbrew/HTTP.pm
-/usr/lib/perl5/vendor_perl/5.34.0/App/Perlbrew/Path.pm
-/usr/lib/perl5/vendor_perl/5.34.0/App/Perlbrew/Path/Installation.pm
-/usr/lib/perl5/vendor_perl/5.34.0/App/Perlbrew/Path/Installations.pm
-/usr/lib/perl5/vendor_perl/5.34.0/App/Perlbrew/Path/Root.pm
-/usr/lib/perl5/vendor_perl/5.34.0/App/Perlbrew/Util.pm
-/usr/lib/perl5/vendor_perl/5.34.0/App/perlbrew.pm
+/usr/lib/perl5/*
