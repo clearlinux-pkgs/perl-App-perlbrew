@@ -4,14 +4,15 @@
 # Using build pattern: cpan
 #
 Name     : perl-App-perlbrew
-Version  : 0.97
-Release  : 26
-URL      : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.97.tar.gz
-Source0  : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.97.tar.gz
+Version  : 0.98
+Release  : 27
+URL      : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.98.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-0.98.tar.gz
 Summary  : 'Manage perl installations in your C<$HOME>'
 Group    : Development/Tools
 License  : MIT
 Requires: perl-App-perlbrew-bin = %{version}-%{release}
+Requires: perl-App-perlbrew-license = %{version}-%{release}
 Requires: perl-App-perlbrew-man = %{version}-%{release}
 Requires: perl-App-perlbrew-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
@@ -64,6 +65,7 @@ perlbrew exec -- perl -E 'say $]'
 %package bin
 Summary: bin components for the perl-App-perlbrew package.
 Group: Binaries
+Requires: perl-App-perlbrew-license = %{version}-%{release}
 
 %description bin
 bin components for the perl-App-perlbrew package.
@@ -78,6 +80,14 @@ Requires: perl-App-perlbrew = %{version}-%{release}
 
 %description dev
 dev components for the perl-App-perlbrew package.
+
+
+%package license
+Summary: license components for the perl-App-perlbrew package.
+Group: Default
+
+%description license
+license components for the perl-App-perlbrew package.
 
 
 %package man
@@ -98,10 +108,10 @@ perl components for the perl-App-perlbrew package.
 
 
 %prep
-%setup -q -n App-perlbrew-0.97
-cd %{_builddir}/App-perlbrew-0.97
+%setup -q -n App-perlbrew-0.98
+cd %{_builddir}/App-perlbrew-0.98
 pushd ..
-cp -a App-perlbrew-0.97 buildavx2
+cp -a App-perlbrew-0.98 buildavx2
 popd
 
 %build
@@ -119,6 +129,8 @@ fi
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-App-perlbrew
+cp %{_builddir}/App-perlbrew-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/perl-App-perlbrew/237829911eca3ca971ad195bafd110309336301e || :
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -140,6 +152,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/App::perlbrew.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-App-perlbrew/237829911eca3ca971ad195bafd110309336301e
 
 %files man
 %defattr(0644,root,root,0755)
