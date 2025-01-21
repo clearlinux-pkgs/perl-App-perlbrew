@@ -7,7 +7,7 @@
 #
 Name     : perl-App-perlbrew
 Version  : 1.01
-Release  : 33
+Release  : 34
 URL      : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-1.01.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GU/GUGOD/App-perlbrew-1.01.tar.gz
 Summary  : 'Manage perl installations in your C<$HOME>'
